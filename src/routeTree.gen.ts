@@ -11,9 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
+import { Route as DatasetRouteImport } from './routes/dataset'
 import { Route as LiveRouteImport } from './routes/live'
 import { Route as MapRouteImport } from './routes/map'
+import { Route as ModelRouteImport } from './routes/model'
 import { Route as PredictionRouteImport } from './routes/prediction'
+import { Route as SettingsRouteImport } from './routes/settings'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,6 +26,11 @@ const IndexRoute = IndexRouteImport.update({
 const AnalyticsRoute = AnalyticsRouteImport.update({
   id: '/analytics',
   path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DatasetRoute = DatasetRouteImport.update({
+  id: '/dataset',
+  path: '/dataset',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LiveRoute = LiveRouteImport.update({
@@ -35,48 +43,95 @@ const MapRoute = MapRouteImport.update({
   path: '/map',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ModelRoute = ModelRouteImport.update({
+  id: '/model',
+  path: '/model',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PredictionRoute = PredictionRouteImport.update({
   id: '/prediction',
   path: '/prediction',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/analytics': typeof AnalyticsRoute
+  '/dataset': typeof DatasetRoute
   '/live': typeof LiveRoute
   '/map': typeof MapRoute
+  '/model': typeof ModelRoute
   '/prediction': typeof PredictionRoute
+  '/settings': typeof SettingsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/analytics': typeof AnalyticsRoute
+  '/dataset': typeof DatasetRoute
   '/live': typeof LiveRoute
   '/map': typeof MapRoute
+  '/model': typeof ModelRoute
   '/prediction': typeof PredictionRoute
+  '/settings': typeof SettingsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/analytics': typeof AnalyticsRoute
+  '/dataset': typeof DatasetRoute
   '/live': typeof LiveRoute
   '/map': typeof MapRoute
+  '/model': typeof ModelRoute
   '/prediction': typeof PredictionRoute
+  '/settings': typeof SettingsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/analytics' | '/live' | '/map' | '/prediction'
+  fullPaths:
+    | '/'
+    | '/analytics'
+    | '/dataset'
+    | '/live'
+    | '/map'
+    | '/model'
+    | '/prediction'
+    | '/settings'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/analytics' | '/live' | '/map' | '/prediction'
-  id: '__root__' | '/' | '/analytics' | '/live' | '/map' | '/prediction'
+  to:
+    | '/'
+    | '/analytics'
+    | '/dataset'
+    | '/live'
+    | '/map'
+    | '/model'
+    | '/prediction'
+    | '/settings'
+  id:
+    | '__root__'
+    | '/'
+    | '/analytics'
+    | '/dataset'
+    | '/live'
+    | '/map'
+    | '/model'
+    | '/prediction'
+    | '/settings'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnalyticsRoute: typeof AnalyticsRoute
+  DatasetRoute: typeof DatasetRoute
   LiveRoute: typeof LiveRoute
   MapRoute: typeof MapRoute
+  ModelRoute: typeof ModelRoute
   PredictionRoute: typeof PredictionRoute
+  SettingsRoute: typeof SettingsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -95,6 +150,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AnalyticsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dataset': {
+      id: '/dataset'
+      path: '/dataset'
+      fullPath: '/dataset'
+      preLoaderRoute: typeof DatasetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/live': {
       id: '/live'
       path: '/live'
@@ -109,11 +171,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MapRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/model': {
+      id: '/model'
+      path: '/model'
+      fullPath: '/model'
+      preLoaderRoute: typeof ModelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/prediction': {
       id: '/prediction'
       path: '/prediction'
       fullPath: '/prediction'
       preLoaderRoute: typeof PredictionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -122,9 +198,12 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnalyticsRoute: AnalyticsRoute,
+  DatasetRoute: DatasetRoute,
   LiveRoute: LiveRoute,
   MapRoute: MapRoute,
+  ModelRoute: ModelRoute,
   PredictionRoute: PredictionRoute,
+  SettingsRoute: SettingsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

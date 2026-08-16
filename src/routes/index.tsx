@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Activity, Car, Gauge, ShieldCheck, TriangleAlert } from "lucide-react";
-import { AppShell, LiveBadge, PageHeader } from "@/components/traffiq/AppShell";
+import { AppShell, LiveBadge } from "@/components/traffiq/AppShell";
 import { KpiCard } from "@/components/traffiq/KpiCard";
 import { Sticker, ScribbleLabel } from "@/components/traffiq/Sticker";
 import { TrafficLight } from "@/components/traffiq/TrafficLight";

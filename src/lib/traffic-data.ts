@@ -84,7 +84,7 @@ const densities = ["Sparse", "Normal", "Dense", "Very Dense"];
 
 export const datasetRows = Array.from({ length: 160 }, (_, i) => {
   const hour = (i * 7) % 24;
-  const loc = locNames[i % locNames.length];
+  const loc = locNames[i % locNames.length]!;
   const vehicles = 180 + ((i * 137) % 1400);
   const speed = Math.max(10, 60 - Math.round(vehicles / 32));
   const level: Level = vehicles > 1050 ? "High" : vehicles > 620 ? "Moderate" : "Low";
@@ -92,10 +92,10 @@ export const datasetRows = Array.from({ length: 160 }, (_, i) => {
     id: i + 1,
     location: loc,
     hour,
-    density: densities[(i + hour) % densities.length],
+    density: densities[(i + hour) % densities.length]!,
     vehicles,
     speed,
-    weather: weathers[(i * 3) % weathers.length],
+    weather: weathers[(i * 3) % weathers.length]!,
     level,
   };
 });
