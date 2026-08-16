@@ -34,10 +34,10 @@ export function DelhiMap({ compact = false }: { compact?: boolean }) {
             return (
               <line
                 key={i}
-                x1={50 + Math.cos(a) * 5}
-                y1={30 + Math.sin(a) * 5}
-                x2={50 + Math.cos(a) * 52}
-                y2={30 + Math.sin(a) * 42}
+                x1={(50 + Math.cos(a) * 5).toFixed(3)}
+                y1={(30 + Math.sin(a) * 5).toFixed(3)}
+                x2={(50 + Math.cos(a) * 52).toFixed(3)}
+                y2={(30 + Math.sin(a) * 42).toFixed(3)}
                 stroke="var(--border)"
                 strokeWidth="0.8"
               />
