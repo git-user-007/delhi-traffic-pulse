@@ -50,7 +50,7 @@ export function KpiCard({
       </div>
       <p className="mt-3 font-display text-3xl font-extrabold tracking-tight">
         {numeric !== undefined ? (
-          <CountUp value={numeric} decimals={decimals} suffix={suffix} />
+          <CountUp value={numeric} decimals={decimals} suffix={suffix ?? ""} />
         ) : (
           value
         )}
